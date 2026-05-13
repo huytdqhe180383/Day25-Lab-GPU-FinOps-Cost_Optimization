@@ -112,6 +112,7 @@ Tạo một thư mục nộp bài với cấu trúc sau:
 ├── report.pdf                          # Báo cáo phân tích (nếu có yêu cầu)
 ├── screenshots/
 │   ├── part1_cluster_monitoring.png
+│   ├── part1_cluster_metrics.png
 │   ├── part2_workload_submission.png
 │   ├── part2_billing_summary.png
 │   ├── part3_spot_pricing.png

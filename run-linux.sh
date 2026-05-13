@@ -72,7 +72,7 @@ case "${1:-start}" in
     if command -v cloudflared >/dev/null 2>&1; then
       print_info "Using cloudflared (free, no account needed)"
       echo "  Starting tunnel..."
-      cloudflared tunnel --url http://localhost:8000 2>&1 | tee "$PROJECT_DIR/.tunnel.log" &
+      nohup cloudflared tunnel --url http://localhost:8000 > "$PROJECT_DIR/.tunnel.log" 2>&1 < /dev/null &
       echo $! > "$TUNNEL_PID_FILE"
 
       # Wait up to 15s for the URL to appear
@@ -100,7 +100,7 @@ case "${1:-start}" in
 
     elif command -v ngrok >/dev/null 2>&1; then
       print_info "Using ngrok"
-      ngrok http 8000 &
+      nohup ngrok http 8000 > "$PROJECT_DIR/.ngrok.log" 2>&1 < /dev/null &
       echo $! > "$TUNNEL_PID_FILE"
       sleep 3
       # Get ngrok URL via API
